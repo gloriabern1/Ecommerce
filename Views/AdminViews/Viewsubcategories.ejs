@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from www.themeon.net/nifty/v2.6/pages-blank.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Apr 2017 22:46:05 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    <% include ../Partials/AdminHeaderlink.ejs %>
+</head>
+
+<!--TIPS-->
+<!--You may remove all ID or Class names which contain "demo-", they are only used for demonstration. -->
+<body>
+    <div id="container" class="effect aside-float aside-bright mainnav-lg">
+        
+        <!--NAVBAR-->
+        <!--===================================================-->
+        <% include ../Partials/Adminheader.ejs %>
+        <!--===================================================-->
+        <!--END NAVBAR-->
+
+        <div class="boxed">
+
+            <!--CONTENT CONTAINER-->
+            <!--===================================================-->
+            <div id="content-container">
+                
+                <!--Page Title-->
+                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                <div id="page-title">
+                    <h1 class="page-header text-overflow">View Sub-Category</h1>
+
+                    <!--Searchbox-->
+                    <div class="searchbox">
+                        <div class="input-group custom-search-form">
+                            <input type="text" class="form-control" placeholder="Search..">
+                            <span class="input-group-btn">
+                                <button class="text-muted" type="button"><i class="demo-pli-magnifi-glass"></i></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                <!--End page title-->
+
+                  <!--Page content-->
+                <!--===================================================-->
+                <div id="page-content">
+                    
+					<div class="row">
+					    <div class="col-lg-10 col-lg-offset-1">
+					      
+                                <div class="panel">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">All Sub-Categories</h3>
+                                    </div>
+                        
+                                    <!--Horizontal Form-->
+                                    <!--===================================================-->
+                                    <div class="panel-body">
+                                          
+                                                    <div class="table-responsive">
+                                                            <table class="table table-striped">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>SN</th>
+                                                                        <th>Category</th>
+                                                                        <th>Subcategroy Name</th>
+                                                                        <th>Description</th>
+                                                                        <th>Date Created</th>
+                                                                        <th>Action </th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                        <% for(let i = 0; i < LIst_SubCategory.length; i++) { %>
+                                                                            <tr>
+                                                                                    <td><% i+1 %></td>
+                                                                                    <td><%= LIst_SubCategory[i].Categoryid.Name %></td>
+                                                                                    <td><%= LIst_SubCategory[i].Name %></td>
+                                                                                    <td><%= LIst_SubCategory[i].Description %></td>
+                                                                                    <td><%= LIst_SubCategory[i].DateCreated.toDateString() %></td>
+                                                                                    <td>
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-12">
+                                                                                                    <div class=col-md-4>
+                                                                                            <form method="GET" action="/Admin/<%= LIst_SubCategory[i]._id %>/updateSubcategory">
+                                                                                                <button class="btn btn-success btn-sm btn-icon" type="submit"><i class="demo-psi-pen-5 icon-sm"></i></button>
+                                                                                            </form>   
+                                                                                        </div>
+                                                                                        <div class="col-md-4">
+                                                                                            <form method="Post" action="/Admin/<%= LIst_SubCategory[i]._id %>/deleteSubcategory">
+                                                                                                <button class="btn btn-danger btn-sm btn-icon" type="submit"><i class="demo-psi-recycling -5 icon-sm"></i></button>
+                                                                                            </form> 
+                                                                                        </div>
+                                                                                        </div>
+                                                                                            </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                         
+                                                                        <% } %>
+                                                                   
+                                                                  
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                     
+                                        </div>
+                                
+                              
+                                    <!--===================================================-->
+                                    <!--End Horizontal Form-->
+                        
+                                </div>
+                            
+					    </div>
+					</div>
+					
+					
+					
+                </div>
+                <!--===================================================-->
+                <!--End page content-->
+
+
+            </div>
+            <!--===================================================-->
+            <!--END CONTENT CONTAINER-->
+
+
+
+            
+            <!--MAIN NAVIGATION-->
+            <!--===================================================-->
+            <% include ../Partials/Sidebar.ejs %>
+            <!--===================================================-->
+            <!--END MAIN NAVIGATION-->
+
+        </div>
+
+        
+
+        <!-- FOOTER -->
+        <!--===================================================-->
+        <footer id="footer">
+
+            <!-- Visible when footer positions are fixed -->
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+            <div class="show-fixed pull-right">
+                You have <a href="#" class="text-bold text-main"><span class="label label-danger">3</span> pending action.</a>
+            </div>
+
+
+
+            <!-- Visible when footer positions are static -->
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+            <div class="hide-fixed pull-right pad-rgt">
+                14GB of <strong>512GB</strong> Free.
+            </div>
+
+
+
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+            <!-- Remove the class "show-fixed" and "hide-fixed" to make the content always appears. -->
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+            <p class="pad-lft">&#0169; 2017 Your Company</p>
+
+
+
+        </footer>
+        <!--===================================================-->
+        <!-- END FOOTER -->
+
+
+        <!-- SCROLL PAGE BUTTON -->
+        <!--===================================================-->
+        <button class="scroll-top btn">
+            <i class="pci-chevron chevron-up"></i>
+        </button>
+        <!--===================================================-->
+
+
+
+    </div>
+    <!--===================================================-->
+    <!-- END OF CONTAINER -->
+
+
+
+
+</body>
+
+<!-- Mirrored from www.themeon.net/nifty/v2.6/pages-blank.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Apr 2017 22:46:06 GMT -->
+</html>
+

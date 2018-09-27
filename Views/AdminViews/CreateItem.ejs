@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from www.themeon.net/nifty/v2.6/pages-blank.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Apr 2017 22:46:05 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    <% include ../Partials/AdminHeaderlink.ejs %>
+
+    <style>
+    .modal-dialog {
+        width: 300px!important;
+        text-align: center!important;
+        font-size: 16px!important;
+    }
+    .bootbox-body {
+      margin-top:30px!important;
+    }
+    </style>
+</head>
+
+<!--TIPS-->
+<!--You may remove all ID or Class names which contain "demo-", they are only used for demonstration. -->
+<body>
+    <div id="container" class="effect aside-float aside-bright mainnav-lg">
+        
+        <!--NAVBAR-->
+        <!--===================================================-->
+        <% include ../Partials/Adminheader.ejs %>
+        <!--===================================================-->
+        <!--END NAVBAR-->
+
+        <div class="boxed">
+
+            <!--CONTENT CONTAINER-->
+            <!--===================================================-->
+            <div id="content-container">
+                
+                <!--Page Title-->
+                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                <div id="page-title">
+                    <h1 class="page-header text-overflow">Create Product</h1>
+
+                    <!--Searchbox-->
+                    <div class="searchbox">
+                        <div class="input-group custom-search-form">
+                            <input type="text" class="form-control" placeholder="Search..">
+                            <span class="input-group-btn">
+                                <button class="text-muted" type="button"><i class="demo-pli-magnifi-glass"></i></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                <!--End page title-->
+
+                  <!--Page content-->
+                <!--===================================================-->
+                <div id="page-content">
+                    
+                    <div class="row">
+					    <div class="col-lg-10 col-lg-offset-1">
+					        <div class="panel">
+					
+					            <!-- Classic Form Wizard -->
+					            <!--===================================================-->
+					            <div id="demo-cls-wz">
+					
+					                <!--Nav-->
+					                <ul class="wz-nav-off wz-icon-inline">
+					                    <li class="col-xs-6 bg-mint">
+					                        <a data-toggle="tab" href="#demo-cls-tab1">
+					                            <span class="icon-wrap icon-wrap-xs bg-trans-dark">
+                                                    
+                                                    <i class="demo-pli-information icon-lg"></i></span> Product Details
+					                        </a>
+					                    </li>
+					                    <li class="col-xs-6 bg-mint">
+					                        <a data-toggle="tab" href="#demo-cls-tab2">
+					                            <span class="icon-wrap icon-wrap-xs bg-trans-dark">
+                                                    <i class="demo-pli-male icon-lg"></i></span> Images
+					                        </a>
+					                    </li>
+					                    <!-- <li class="col-xs-3 bg-mint">
+					                        <a data-toggle="tab" href="#demo-cls-tab3">
+					                            <span class="icon-wrap icon-wrap-xs bg-trans-dark">
+                                                    <i class="demo-pli-home icon-lg"></i></span> Address
+					                        </a>
+					                    </li>
+					                    <li class="col-xs-3 bg-mint">
+					                        <a data-toggle="tab" href="#demo-cls-tab4">
+					                            <span class="icon-wrap icon-wrap-xs bg-trans-dark">
+                                                    <i class="demo-pli-medal-2 icon-lg"></i></span> Finish
+					                        </a>
+					                    </li> -->
+					                </ul>
+					
+					                <!--Progress bar-->
+					                <div class="progress progress-xs progress-striped active">
+					                    <div class="progress-bar progress-bar-dark"></div>
+					                </div>
+					
+					
+					                <!--Form-->
+					                <form class="form-horizontal mar-top">
+					                    <div class="panel-body">
+					                        <div class="tab-content">
+					
+					                            <!--First tab-->
+					                            <div id="demo-cls-tab1" class="tab-pane">
+					                                <div class="form-group">
+					                                    <label class="col-lg-3 control-label">Product Name</label>
+					                                    <div class="col-lg-7">
+					                                        <input type="text" class="form-control" id="txtproductname" name="txtproductname" maxlength="200" minlength="5" required>
+					                                    </div>
+					                                </div>
+					                                <div class="form-group">
+					                                    <label class="col-lg-3 control-label">Description</label>
+					                                    <div class="col-lg-7">
+					                                        <textarea class="form-control" rows="2" placeholder="Your content here...." required name="txtdescript" maxlength="500" minlength="10" id="txtdescript">
+					                                        </textarea>
+					                                    </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                            <label class="col-sm-3 control-label" for="demo-hor-inputemail">Select Category</label>
+                                                            <div class="col-sm-7">
+                                                                <select class="selectpicker form-control" id="sltcategory" name="sltcategory" required >                                                    
+                                                                        <% if( typeof categories!="undefined"){ %>                                                    
+                                                                            <%for ( var i=0; i<categories.length; i++ ){ %>
+                                                                                <% if( typeof categoryselect!="undefined"){ %>
+                                                                                    <option value="<%= categories[i]._id %>" <%=( categoryselect.Categoryid.toString()== categories[i]._id.toString() ?
+                                                                                        'selected': '') %>>
+                                                                                        <%= categories[i].Name %>
+                                                                                    </option>
+                                                                                    <%} else {%>
+                                                                                    <option value="<%= categories[i]._id %>">
+                                                                                        <%= categories[i].Name %>
+                                                                                    </option>
+                                                                               <%}%>
+                                                                          <%}%>
+                                                                       <%}%>
+                                                          
+                                                                 </select>
+                                                            </div>
+                                                        </div>
+                                                
+                                                
+                                                        <div class="form-group">
+                                                                <label class="col-sm-3 control-label" for="demo-hor-inputemail">Select Subcategory</label>
+                                                                <div class="col-sm-7">
+                                                                        <select class="selectpicker form-control" id="sltsubcategory" name="sltsubcategory" disabled="true" >                                                    
+                                                                                
+                                                                                <!-- <% if( typeof subcategories!="undefined"){ %>                                                    
+                                                                                    <%for ( var i=0; i<subcategories.length; i++ ){ %>
+                                                                                        <% if( typeof categoryselect!="undefined"){ %>
+                                                                                            <option value="<%= subcategories[i]._id %>" <%=( categoryselect.Categoryid.toString()== subcategories[i]._id.toString() ?
+                                                                                                'selected': '') %>>
+                                                                                                <%= subcategories[i].Name %>
+                                                                                            </option>
+                                                                                            <%} else {%>
+                                                                                            <option value="<%= subcategories[i]._id %>">
+                                                                                                <%= subcategories[i].Name %>
+                                                                                            </option>
+                                                                                       <%}%>
+                                                                                  <%}%>
+                                                                               <%}%>
+         -->
+                                                                        </select>
+                                                                </div>
+                                                            </div>
+                                                
+                                                            <div class="form-group">
+                                                                    <label class="col-sm-3 control-label" for="demo-hor-inputemail">Select Brand</label>
+                                                                    <div class="col-sm-7">
+                                                                            <select class="selectpicker form-control" id="sltbrand" name="sltbrand" required>                                                    
+                                                                                    <% if( typeof brands!="undefined"){ %>                                                    
+                                                                                        <%for ( var i=0; i<brands.length; i++ ){ %>
+                                                                                            <% if( typeof categoryselect!="undefined"){ %>
+                                                                                                <option value="<%= brands[i]._id %>" <%=( categoryselect.Categoryid.toString()== brands[i]._id.toString() ?
+                                                                                                    'selected': '') %>>
+                                                                                                    <%= brands[i].Name %>
+                                                                                                </option>
+                                                                                                <%} else {%>
+                                                                                                <option value="<%= brands[i]._id %>">
+                                                                                                    <%= brands[i].Name %>
+                                                                                                </option>
+                                                                                           <%}%>
+                                                                                      <%}%>
+                                                                                   <%}%>
+                                                                            </select>
+                                                                    </div>
+                                                                </div>
+                                                    
+                                                            <div class="form-group">
+                                                                    <label class="col-lg-3 control-label">Item Type</label>
+                                                                    <div class="col-lg-7">
+                                                                        <input type="text" class="form-control" id="txtitemtype" name="txtitemtype" required maxlength="100">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                        <label class="col-lg-3 control-label">Price</label>
+                                                                        <div class="col-lg-7">
+                                                                            <input type="number" class="form-control" id="txtprice" name="txtprice" required maxlength="50">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                            <label class="col-lg-3 control-label">Quantity</label>
+                                                                            <div class="col-lg-7">
+                                                                                <input type="number" class="form-control" id="txtquantity" required name="txtquantity" maxlength="10">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                                <label class="col-lg-3 control-label">Discount</label>
+                                                                                <div class="col-lg-7">
+                                                                                    <input type="number" class="form-control" id="txtdiscount" name="txtdiscount" >
+                                                                                </div>
+                                                                            </div>
+                                                                       
+                                                    </div>
+					
+					                            <!--Second tab-->
+					                            <div id="demo-cls-tab2" class="tab-pane fade">
+                                                        <p>
+                                                                <% if( typeof errors!="undefined"){ %>
+                                                                    <ul>
+                                                                        <% for(var i = 0; i < errors.length; i++){ %>
+                                                                            <li style="color:red!important">
+                                                                                <%= errors[i].msg %>
+                                                                            </li>
+                                                                            <% } %>
+                                                                    </ul>
+                                                                    <% } %>
+                                                            </p>
+                                                        <p>Select Only Four Images for this product</p>
+                                                        
+                                                        <div class="bord-top pad-ver">
+                                                                <!-- The fileinput-button span is used to style the file input field as button -->
+                                                                <span class="btn btn-success fileinput-button dz-clickable">
+                                                                    <i class="fa fa-plus"></i>
+                                                                    <span>Add files...</span>
+                                                                </span>
+                                                    
+                                                                <div class="btn-group pull-right">
+                                                                    <button id="dz-upload-btn" class="btn btn-primary" type="submit" disabled>
+                                                                        <i class="fa fa-upload-cloud"></i> Submit
+                                                                    </button>
+                                                                    <button id="dz-remove-btn" class="btn btn-danger cancel" type="reset" disabled>
+                                                                        <i class="demo-pli-cross"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                    
+                                                    
+                                                            <div id="dz-previews">
+                                                                <div id="dz-template" class="pad-top bord-top">
+                                                                    <div class="media">
+                                                                        <div class="media-body">
+                                                                             <!--This is used as the file preview template-->
+                                                                            <div class="media-block">
+                                                                                <div class="media-left">
+                                                                                    <img class="dz-img" data-dz-thumbnail>
+                                                                                </div>
+                                                                                <div class="media-body">
+                                                                                    <p class="text-main text-bold mar-no text-overflow" data-dz-name></p>
+                                                                                    <span class="dz-error text-danger text-sm" data-dz-errormessage></span>
+                                                                                    <p class="text-sm" data-dz-size></p>
+                                                                                    <div id="dz-total-progress" style="opacity:0">
+                                                                                         <div class="progress progress-xs active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                                                                                            <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="media-right">
+                                                                            <button data-dz-remove class="btn btn-xs btn-danger dz-cancel"><i class="demo-pli-cross"></i></button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                    
+					                            </div>
+					
+					                            <!--Third tab-->
+					                            <!-- <div id="demo-cls-tab3" class="tab-pane">
+					                                <div class="form-group">
+					                                    <label class="col-lg-3 control-label">Address</label>
+					                                    <div class="col-lg-7">
+					                                        <input type="text" placeholder="Address" name="address" class="form-control">
+					                                    </div>
+					                                </div>
+					                                <div class="form-group">
+					                                    <label class="col-lg-3 control-label">City</label>
+					                                    <div class="col-lg-7">
+					                                        <input type="text" placeholder="City" name="city" class="form-control">
+					                                    </div>
+					                                </div>
+					                            </div> -->
+					
+					                            <!--Fourth tab-->
+					                            <!-- <div id="demo-cls-tab4" class="tab-pane mar-btm">
+					                                <h4>Thank you</h4>
+					                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </p>
+					                            </div> -->
+					                        </div>
+					                    </div>
+					
+					
+					                    <!--Footer button-->
+					                    <div class="panel-footer text-right">
+					                        <div class="box-inline">
+					                            <button type="button" class="previous btn btn-mint">Previous</button>
+					                            <button type="button" class="next btn btn-mint" id="nextbtn"> Next</button>
+					                            <button type="button" class="finish btn btn-mint" disabled>Finish</button>
+					                        </div>
+					                    </div>
+					                </form>
+					            </div>
+					            <!--===================================================-->
+					            <!-- End Classic Form Wizard -->
+					
+					        </div>
+					    </div>
+					    
+					</div>
+					
+					
+                </div>
+                <!--===================================================-->
+                <!--End page content-->
+
+
+            </div>
+            <!--===================================================-->
+            <!--END CONTENT CONTAINER-->
+            
+            <!--MAIN NAVIGATION-->
+            <!--===================================================-->
+            <% include ../Partials/Sidebar.ejs %>
+            <!--===================================================-->
+            <!--END MAIN NAVIGATION-->
+
+        </div>
+
+        
+
+        <!-- FOOTER -->
+        <!--===================================================-->
+        <footer id="footer">
+
+            <!-- Visible when footer positions are fixed -->
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+            <div class="show-fixed pull-right">
+                You have <a href="#" class="text-bold text-main"><span class="label label-danger">3</span> pending action.</a>
+            </div>
+
+
+
+            <!-- Visible when footer positions are static -->
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+            <div class="hide-fixed pull-right pad-rgt">
+                14GB of <strong>512GB</strong> Free.
+            </div>
+
+
+
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+            <!-- Remove the class "show-fixed" and "hide-fixed" to make the content always appears. -->
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+            <p class="pad-lft">&#0169; 2017 Your Company</p>
+
+
+
+        </footer>
+        <!--===================================================-->
+        <!-- END FOOTER -->
+
+        <!-- SCROLL PAGE BUTTON -->
+        <!--===================================================-->
+        <button class="scroll-top btn">
+            <i class="pci-chevron chevron-up"></i>
+        </button>
+        <!--===================================================-->
+
+
+        <script type="text/javascript">
+         $("#sltcategory").change(function() {
+    var dropdownselect = $(this).val();
+
+    $.ajax({
+                     type: 'GET',
+                    url: '/Admin/ItemList/subcategory/' + dropdownselect,
+                    contentType: 'application/json',
+                    dataType: 'json',
+                    success: function (data) {
+                        var result= (data[0]);
+                                var options = '<option value="">Select a Subcategory</option>';
+                                for (var i = 0; i < result.length; i++) {
+                                options += '<option value="' + result[i]._id + '">' + result[i].Name + '</option>';
+                                }
+                                $("select#sltsubcategory").html(options);
+                                $("select#sltsubcategory option:first").attr('selected', 'selected');
+                                $("select#sltsubcategory").attr('disabled', false);
+                               
+                    }
+                });
+         });
+  
+            </script>
+    </div>
+    <!--===================================================-->
+    <!-- END OF CONTAINER -->
+
+
+
+
+</body>
+
+<!-- Mirrored from www.themeon.net/nifty/v2.6/pages-blank.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Apr 2017 22:46:06 GMT -->
+</html>
+

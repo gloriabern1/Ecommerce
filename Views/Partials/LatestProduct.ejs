@@ -1,0 +1,49 @@
+<div class="heading heading-v1 margin-bottom-40">
+    <h2>Latest products</h2>
+</div>
+
+<!--=== Illustration v2 ===-->
+<div class="row illustration-v2">
+        <% if(typeof latestproduct!="undefined"){%>
+            <% for (var i=0; i< latestproduct.length; i++){%>
+    <div class="col-md-3 col-sm-6 md-margin-bottom-30">
+        <div class="product-img">
+            <a href="/productdetails/<%= latestproduct[i]._id %>">
+                <img class="full-width img-responsive" src=< %= latestproduct[i].ItemPictures[0].ItemPictureUrl %> alt=""></a>
+            <a class="product-review" href="/productdetails/<%= latestproduct[i]._id %>">Quick review</a>
+            <a class="add-to-cart" href="#"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+        </div>
+        <div class="product-description product-description-brd">
+            <div class="overflow-h margin-bottom-5">
+                <div class="pull-left">
+                    <h4 class="title-price"><a href="shop-ui-inner.html">
+                            <%= latestproduct[i].Categoryid.Name %>
+                    </a></h4>
+                    <span class="gender text-uppercase">Woman</span>
+                    <span class="gender text-uppercase">Brand-
+                            <%= latestproduct[i].Brandid.Name %>
+                        </span>
+                    <span class="gender">
+                            <%= latestproduct[i].Name %>
+                    </span>
+                </div>
+                <div class="product-price">
+                    <span class="title-price">
+                            <%= latestproduct[i].Price %>
+                    </span>
+                </div>
+            </div>
+            <ul class="list-inline product-ratings">
+                <li><i class="rating-selected fa fa-star"></i></li>
+                <li><i class="rating-selected fa fa-star"></i></li>
+                <li><i class="rating-selected fa fa-star"></i></li>
+                <li><i class="rating fa fa-star"></i></li>
+                <li><i class="rating fa fa-star"></i></li>
+                <li class="like-icon"><a data-original-title="Add to wishlist" data-toggle="tooltip" data-placement="left" class="tooltips" href="#"><i class="fa fa-heart"></i></a></li>
+            </ul>
+        </div>
+    </div>
+    <% } %>
+    <% } %>
+</div>
+<!--=== End Illustration v2 ===-->
