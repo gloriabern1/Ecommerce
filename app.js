@@ -11,6 +11,8 @@ var mongoose=require('mongoose');
 mongoose.Promise = global.Promise;
 var mongoDB = 'mongodb://127.0.0.1/MainEcommerce';
 require('./Config/Passport-Setup')(passport);
+ require('./Models/Rolesandclaim');
+
 
 var index = require('./routes/index');
 var users = require('./routes/users');

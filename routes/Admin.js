@@ -3,6 +3,7 @@ var router = express.Router();
 var Category_controllers = require('../Controllers/Category-controllers');
 var Subcategory_controllers=require('../Controllers/Subcategory-controllers');
 var items_controllers=require('../Controllers/Item-controllers');
+var Brand_controllers= require('../Controllers/Brand-controllers');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -40,6 +41,38 @@ router.post('/:id/update', Category_controllers.Category_update_post);
 
 
 router.get('/CategoryList', Category_controllers.Category_list);
+
+
+/// Brand Routes ////
+
+
+router.get('/Createbrand', function(req, res, next) {
+  res.render('AdminViews/CreateBrand', { title: 'Admin Page' });
+});
+
+// POST request for creating Category.
+router.post('/createbrand', Brand_controllers.Brand_create_post);
+
+// GET request to delete Category.
+//router.get('/:id/delete', Category_controllers.Category_delete_get);
+
+// POST request to delete Category.
+router.post('/:id/deletebrand', Brand_controllers.Brand_delete_post);
+
+// GET request to update Category.
+
+router.get('/:id/updatebrand', Brand_controllers.Brand_update_get);
+
+// POST request to update Category.
+router.post('/:id/updatebrand', Brand_controllers.Brand_update_post);
+
+// GET request for one Category.
+//router.get('/:id', Category_controllers.Category_detail);
+
+
+router.get('/BrandList', Brand_controllers.Brand_list);
+
+
 
 /// SubCategory ROUTES ///
 

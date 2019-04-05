@@ -76,7 +76,7 @@ exports.Get_Product_Detail=function(req, res, next){
 };
 
 function Get_latest_Product(){
-  item.find({"Isactive":true})
+  Item.find({"Isactive":true})
     .populate('Categoryid')
     .populate('Subcategoryid')
     .populate('Brandid')

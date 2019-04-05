@@ -58,7 +58,8 @@ exports.Item_Create_Post = [
                 }
             );
             newitem.save(function (err) {
-                if (err) { return callback(err); }
+                if (err) { return callback(err);
+                console.log(err); }
                 // Category saved. Redirect to Category detail page.
                 var itemid = newitem._id;
 
