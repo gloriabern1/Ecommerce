@@ -73,38 +73,31 @@
                     <% } %>
                 
                 <a href="#"><i class="fa fa-shopping-cart"></i></a>
-                <span class="badge badge-sea rounded-x">3</span>
+                <% if(typeof Cart!="undefined"){%>
+                <span class="badge badge-sea rounded-x"><%= Cart.totalQty %></span>
+                
+                    
                 <div class="badge-open">
+                    <% if(typeof Products!="undefined"){%>
                     <ul class="list-unstyled mCustomScrollbar" data-mcs-theme="minimal-dark">
+                        
+                     
+                            <% for (var i=0; i< Products.length; i++){%>
                         <li>
-                            <img src="/assets/img/thumb/05.jpg" alt="">
+                            <img src =<%= Products[i].item.ItemPictures[0].ItemPictureUrl %> alt="" >
                             <button type="button" class="close">×</button>
                             <div class="overflow-h">
-                                <span>Black Glasses</span>
-                                <small>1 x $400.00</small>
+                                <span><%= Products[i].item.Name %></span>
+                                <small><%= Products[i].qty %> x <%= Products[i].item.Price %></small>
                             </div>
                         </li>
-                        <li>
-                            <img src="/assets/img/thumb/02.jpg" alt="">
-                            <button type="button" class="close">×</button>
-                            <div class="overflow-h">
-                                <span>Black Glasses</span>
-                                <small>1 x $400.00</small>
-                            </div>
-                        </li>
-                        <li>
-                            <img src="/assets/img/thumb/03.jpg" alt="">
-                            <button type="button" class="close">×</button>
-                            <div class="overflow-h">
-                                <span>Black Glasses</span>
-                                <small>1 x $400.00</small>
-                            </div>
-                        </li>
+                        <% } %>
                     </ul>
+                    <% } %>
                     <div class="subtotal">
                         <div class="overflow-h margin-bottom-10">
                             <span>Subtotal</span>
-                            <span class="pull-right subtotal-cost">$1200.00</span>
+                            <span class="pull-right subtotal-cost"> $ <%= Cart.totalPrice %></span>
                         </div>
                         <div class="row">
                             <div class="col-xs-6">
@@ -116,6 +109,8 @@
                         </div>
                     </div>
                 </div>
+               
+                <% } %>
             </div>
             <!-- End Shopping Cart -->
 

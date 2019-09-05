@@ -15,5 +15,6 @@ router.get('/Checkout', function(req, res, next) {
   res.render('Checkout', { title: 'Gobid Store' });
 });
 
+router.get('/add-to-cart/:id', Product_Controller.Add_Product_Cart)
 
 module.exports = router;

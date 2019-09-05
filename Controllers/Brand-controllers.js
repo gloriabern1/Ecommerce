@@ -15,7 +15,7 @@ exports.Brand_list = function(req, res) {
 };
 
 // Display detail page for a specific Category.
-// exports.Category_detail = function(req, res) {
+// exports.Category_detail = function(req, res) { 
 //     res.send('NOT IMPLEMENTED: Category detail: ' + req.params.id);
 // };
 

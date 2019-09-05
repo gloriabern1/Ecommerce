@@ -12,7 +12,7 @@ mongoose.Promise = global.Promise;
 var mongoDB = 'mongodb://127.0.0.1/MainEcommerce';
 require('./Config/Passport-Setup')(passport);
  require('./Models/Rolesandclaim');
-
+var MongoStore= require('connect-mongo')(session);
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -42,8 +42,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
   secret: 'kjdjsijsjjsdjsjsjdjkjsjsj',
-  resave: true,
-  saveUninitialized: true
+  resave: false,
+  saveUninitialized: false,
+  store: new MongoStore({mongooseConnection: mongoose.connection}),
+  cookie: {maxAge:180 * 60 * 1000}
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -67,7 +69,7 @@ app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-
+  res.locals.session=req.session;
   // render the error page
   res.status(err.status || 500);
   res.render('error');

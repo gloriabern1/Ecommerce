@@ -2,6 +2,7 @@ var Subcategory = require('../Models/SubCategory');
 var Category = require('../Models/Category');
 var Brand = require('../Models/Brand');
 var Item = require('../Models/Items');
+var Cart= require('../Models/Cart');
 var ItemImages = require('../Models/ItemImages');
 var async = require('async');
 var formidable = require('formidable');
@@ -22,7 +23,13 @@ exports.Product_List_Index = function (req, res, next) {
       if (err) { return next(err); }
       //Successful, so render
       var newproduct=Get_latest_Product();
-      res.render('index', { title: 'Admin page', details: SubCategory_list, latestproduct : newproduct});
+      if( req.session.cart !=null){
+        var cart= new Cart(req.session.cart);
+         var products= cart.generateArray();
+         
+      }
+     
+      res.render('index', { title: 'Admin page', details: SubCategory_list, latestproduct : newproduct, Cart:cart, Products:products});
     });
 };
 
@@ -72,8 +79,26 @@ exports.Get_Product_Detail=function(req, res, next){
     res.render('ProductDetail', { title: 'Admin page', details: SubCategory_list});
   });
 
-
 };
+
+exports.Add_Product_Cart=function(req, res, next){
+  console.log("in add to cart function, in product controller");
+  var productid= req.params.id;
+  var cart= new Cart(req.session.cart ? req.session.cart :{});
+  Item.findById({_id: productid}).populate('ItemPictures').exec(function(err, product){
+if(err){
+  console.log("Product does not exist" + err);
+  return next(err);
+}
+//console.log(product);
+cart.add(product, productid);
+req.session.cart= cart;
+//console.log(req.session.cart);
+res.redirect('/');
+  });
+};
+
+
 
 function Get_latest_Product(){
   Item.find({"Isactive":true})

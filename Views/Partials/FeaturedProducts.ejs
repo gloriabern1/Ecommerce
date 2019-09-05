@@ -25,7 +25,7 @@
 						<a href="/productdetails/<%= details[i]._id %>">
 							<img class="full-width img-responsive" src=<%=details[i].ItemPictures[0].ItemPictureUrl %> alt=""></a>
 						<a class="product-review" href="/productdetails/<%= details[i]._id %>">Quick review</a>
-						<a class="add-to-cart" href="#">
+						<a class="add-to-cart" href="/add-to-cart/<%= details[i]._id %>">
 							<i class="fa fa-shopping-cart"></i>Add to cart</a>
 					</div>
 					<div class="product-description product-description-brd">
